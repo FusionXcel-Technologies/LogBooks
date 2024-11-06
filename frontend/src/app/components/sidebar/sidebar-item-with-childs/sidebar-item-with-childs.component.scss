@@ -1,0 +1,73 @@
+@import "../../../../styles.scss";
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin-right: 1rem;
+
+    .arr {
+        margin-left: auto;
+    }
+
+    /* Apply color and margin to all child elements */
+    * {
+        color: var(--text-color); // Use text color from variables
+        margin-left: 10px;
+    }
+
+    /* Style for SVG icons */
+    svg {
+        fill: var(--text-color); // Use text color from variables
+    }
+
+    /* Style for span element */
+    span {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-left: 1rem;
+    }
+
+    /* Active class style */
+    &.active {
+        background-color: rgba($color: var(--primary-color), $alpha: 0.7); // Change background when active
+        color: var(--text-color); // Change text color when active
+
+        svg {
+            fill: var(--text-color); // Change icon color when active
+        }
+    }
+}
+
+.arrow-down {
+    transform: rotate(90deg);
+
+    // transition: transform 0.5s ease;
+}
+
+.childs-list {
+    margin-top: -25px;
+
+    .child {
+        margin-left: 60px;
+        padding: 0 0 0 1rem; /* Combined padding properties */
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+
+        cursor: pointer;
+
+        // p {
+        //     color: var(--primary-color);
+        // }
+
+        &:hover {
+            color: var(--primary-color); /* Optional hover effect */
+        }
+    }
+}
+
+.active-child {
+    color: var(--primary-color) !important;
+}

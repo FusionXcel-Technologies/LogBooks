@@ -1,0 +1,154 @@
+<app-header></app-header>
+
+<div class="body">
+    <app-sidebar></app-sidebar>
+
+    <main class="report-content">
+        <div class="head-bar">
+            <h1 class="report-title">Sales Report</h1>
+            <div class="hb-right">
+                <div class="export select-date" (click)="toggleDropdown()">
+                    <div class="dis">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#5f6368">
+                            <path
+                                d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z" />
+                        </svg>
+                        <p>Export</p>
+                    </div>
+                    <div class="dropdown" *ngIf="isDropdownVisible">
+                        <ul>
+                            <li (click)="exportOption('CSV')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#5f6368">
+                                    <path
+                                        d="M230-360h120v-60H250v-120h100v-60H230q-17 0-28.5 11.5T190-560v160q0 17 11.5 28.5T230-360Zm156 0h120q17 0 28.5-11.5T546-400v-60q0-17-11.5-31.5T506-506h-60v-34h100v-60H426q-17 0-28.5 11.5T386-560v60q0 17 11.5 30.5T426-456h60v36H386v60Zm264 0h60l70-240h-60l-40 138-40-138h-60l70 240ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-480H160v480Zm0 0v-480 480Z" />
+                                </svg>
+                                CSV
+                            </li>
+                            <li (click)="exportOption('PDF')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#5f6368">
+                                    <path
+                                        d="M360-460h40v-80h40q17 0 28.5-11.5T480-580v-40q0-17-11.5-28.5T440-660h-80v200Zm40-120v-40h40v40h-40Zm120 120h80q17 0 28.5-11.5T640-500v-120q0-17-11.5-28.5T600-660h-80v200Zm40-40v-120h40v120h-40Zm120 40h40v-80h40v-40h-40v-40h40v-40h-80v200ZM320-240q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
+                                </svg>
+                                PDF
+                            </li>
+                            <li (click)="exportOption('Excel')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#5f6368">
+                                    <path
+                                        d="M120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200Zm80-400h560v-160H200v160Zm213 200h134v-120H413v120Zm0 200h134v-120H413v120ZM200-400h133v-120H200v120Zm427 0h133v-120H627v120ZM200-200h133v-120H200v120Zm427 0h133v-120H627v120Z" />
+                                </svg>
+                                Excel
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="export" (click)="toggleDropdown()">
+                    <div class="dis">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#5f6368">
+                            <path
+                                d="M240-40q-33 0-56.5-23.5T160-120v-440q0-33 23.5-56.5T240-640h120v80H240v440h480v-440H600v-80h120q33 0 56.5 23.5T800-560v440q0 33-23.5 56.5T720-40H240Zm200-280v-447l-64 64-56-57 160-160 160 160-56 57-64-64v447h-80Z" />
+                        </svg>
+                        <p>Export</p>
+
+                    </div>
+
+                    <div class="dropdown" *ngIf="isDropdownVisible">
+                        <ul>
+                            <li (click)="exportOption('CSV')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#5f6368">
+                                    <path
+                                        d="M230-360h120v-60H250v-120h100v-60H230q-17 0-28.5 11.5T190-560v160q0 17 11.5 28.5T230-360Zm156 0h120q17 0 28.5-11.5T546-400v-60q0-17-11.5-31.5T506-506h-60v-34h100v-60H426q-17 0-28.5 11.5T386-560v60q0 17 11.5 30.5T426-456h60v36H386v60Zm264 0h60l70-240h-60l-40 138-40-138h-60l70 240ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-480H160v480Zm0 0v-480 480Z" />
+                                </svg>
+                                CSV
+                            </li>
+                            <li (click)="exportOption('PDF')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#5f6368">
+                                    <path
+                                        d="M360-460h40v-80h40q17 0 28.5-11.5T480-580v-40q0-17-11.5-28.5T440-660h-80v200Zm40-120v-40h40v40h-40Zm120 120h80q17 0 28.5-11.5T640-500v-120q0-17-11.5-28.5T600-660h-80v200Zm40-40v-120h40v120h-40Zm120 40h40v-80h40v-40h-40v-40h40v-40h-80v200ZM320-240q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
+                                </svg>
+                                PDF
+                            </li>
+                            <li (click)="exportOption('Excel')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#5f6368">
+                                    <path
+                                        d="M120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200Zm80-400h560v-160H200v160Zm213 200h134v-120H413v120Zm0 200h134v-120H413v120ZM200-400h133v-120H200v120Zm427 0h133v-120H627v120ZM200-200h133v-120H200v120Zm427 0h133v-120H627v120Z" />
+                                </svg>
+                                Excel
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top-searchbar">
+            <div class="input-bar">
+                <input [(ngModel)]="searchValue" type="text" placeholder="Find product by name, barcode or sku..."
+                    class="search-input" (keyup)="searchItems()" />
+                <div class="svg-btn" (click)="searchItems()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#5f6368">
+                        <path
+                            d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <section class="report-section">
+            <div class="selector-head">
+                <div class="selector-item" [ngClass]="{'active': selectedCategory === 'current inventory'}"
+                    (click)="onSelectCategory('current inventory')">
+                    <p>current inventory</p>
+                </div>
+                <div class="selector-item" [ngClass]="{'active': selectedCategory === 'inventory purchase'}"
+                    (click)="onSelectCategory('inventory purchase')">
+                    <p>inventory purchase</p>
+                </div>
+                <div class="selector-item" [ngClass]="{'active': selectedCategory === 'inventory adjustment'}"
+                    (click)="onSelectCategory('inventory adjustment')">
+                    <p>inventory adjustment</p>
+                </div>
+                <div class="selector-item" [ngClass]="{'active': selectedCategory === 'cost of goods sold'}"
+                    (click)="onSelectCategory('cost of goods sold')">
+                    <p>cost of goods sold</p>
+                </div>
+            </div>
+            <div class="table-container">
+                <div class="tContainer">
+                    <table id="dynamicTableB">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Min stock</th>
+                                <th>Stock</th>
+                                <th>Buy price</th>
+                                <th>Selling Price</th>
+                                <th>Created</th>
+                                <th>Last updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of display_table">
+                                <td>{{item.name}}</td>
+                                <td>{{item.minStock}}</td>
+                                <td>{{item.stock - item.sold}}</td>
+                                <td>{{item.buyPrice}}</td>
+                                <td>{{item.salePrice}}</td>
+                                <td style="max-width: 6rem; overflow: auto;">{{item.created | date: 'EEEE, d MMMM y
+                                    HH:mm:ss:SSS'}}</td>
+                                <td style="max-width: 3rem; overflow: auto;">{{item.lastUpdated | date: 'EEEE, d MMMM y
+                                    HH:mm:ss:SSS'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>

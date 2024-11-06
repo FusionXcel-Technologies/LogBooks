@@ -1,0 +1,56 @@
+@import "../../../../styles.scss";
+
+$text-color: var(--text-color);
+$hover-color: var(--hover-color);
+$primary-color: var(--primary-color);
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin-right: 1rem;
+
+    /* Apply color and margin to all child elements */
+    * {
+        color: $text-color; // Use text color from variables
+        margin-left: 10px;
+    }
+
+    /* Style for SVG icons */
+    svg {
+        fill: $text-color; // Use text color from variables
+    }
+
+    /* Style for span element */
+    span {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-left: 1rem;
+    }
+
+    /* Hover effect */
+    &:hover {
+        color: $hover-color; // Change background on hover
+        span {
+            color: $primary-color;
+            opacity: 0.5;
+        }
+    }
+
+    /* Active class style */
+    &.active {
+        span {
+            font-weight: bold;
+            //  font-size: 1.2rem;
+            color: $primary-color;
+            opacity: 0.9;
+        }
+
+        svg {
+            fill: $text-color; // Change icon color when active
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    //margin-bottom: 10px; // Restore margin for better separation
+    border-bottom: 1px solid #dcdcdc; // Subtle border for cleaner separation
+    margin-top: 0;
+    .item-details {
+        display: flex;
+        flex-direction: column;
+
+        .item-name {
+            font-weight: bold;
+            font-size: 18px; // Slightly larger for better readability
+            color: #222; // Darker color for better contrast
+            margin-bottom: 3px; // Add small margin for spacing
+        }
+
+        .item-quantity {
+            font-size: 14px;
+            color: #666; // Softer gray for quantity
+        }
+    }
+    .right {
+        display: flex;
+        align-items: center;
+
+        .remove {
+            color: #f44336; // Red color for better visibility
+            margin-left: 5px;
+            cursor: pointer; // Change cursor style when hovering over the remove button
+        }
+    }
+    .item-total {
+        font-weight: bold;
+        font-size: 18px; // Match the item-name size for consistency
+        color: var(--secondary-color); // Add a distinct color for total
+        text-align: right; // Ensure total is aligned right
+    }
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .item-total {
+            margin-top: 8px; // Increase margin for better separation on small screens
+        }
+    }
+}

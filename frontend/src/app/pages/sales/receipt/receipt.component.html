@@ -1,0 +1,38 @@
+<div class="receipt-card" (click)="onAddToCounter()">
+    <h2 class="receipt-id">#{{ receipt.id }}</h2>
+
+    <div class="items-list">
+        <ul class="items-lists">
+            <li *ngFor="let item of receipt.items" class="item">
+                <span class="item-name">{{ item.name }}</span>
+                <span class="item-quantity">x {{ item.quantity }}</span>
+                <span class="item-price">{{ item.salePrice | currency: 'LKR':'symbol' }}</span>
+                <span class="item-total">{{ item.total | currency: 'LKR':'symbol' }}</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="receipt-summary">
+        <div class="summary-row">
+            <span class="label">Total:</span>
+            <span class="value">{{ receipt.total | currency: 'LKR':'symbol' }}</span>
+        </div>
+        <div class="summary-row">
+            <span class="label">Paid:</span>
+            <span class="value">{{ receipt.paid | currency: 'LKR':'symbol' }}</span>
+        </div>
+        <div class="summary-row">
+            <span class="label">Balance:</span>
+            <span class="value" [ngClass]="{'negative': receipt.balance < 0}">
+                {{ receipt.balance | currency: 'LKR':'symbol' }}
+            </span>
+        </div>
+    </div>
+
+    <div class="receipt-timestamp">
+        <p><span class="label">Created:</span> {{ receipt.created | date:'longDate' }} at {{ receipt.created |
+            date:'shortTime' }}</p>
+        <p><span class="label">Last Updated:</span> {{ receipt.lastUpdated | date:'longDate' }} at {{
+            receipt.lastUpdated | date:'shortTime' }}</p>
+    </div>
+</div>

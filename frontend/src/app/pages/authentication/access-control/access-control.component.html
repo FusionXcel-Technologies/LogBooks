@@ -1,0 +1,27 @@
+
+    <div class="display">
+        <div class="selector-head">
+            <div class="selector-item" [ngClass]="{'active': selectedCategory === 'users'}"
+                (click)="onSelectCategory('users')">
+                <p>users</p>
+            </div>
+            <div class="selector-item" [ngClass]="{'active': selectedCategory === 'roles'}"
+                (click)="onSelectCategory('roles')">
+                <p>roles</p>
+            </div>
+            <!-- <div class="selector-item" [ngClass]="{'active': selectedCategory === 'permissions'}" 
+                (click)="onSelectCategory('permissions')">
+                <p>permissions</p>
+            </div> -->
+            <!-- <div class="selector-item" [ngClass]="{'active': selectedCategory === 'access logs'}"
+                (click)="onSelectCategory('access logs')">
+                <p>access logs</p>
+            </div> -->
+        </div>
+        <div class="container">
+            <app-items [items]="usersList" [onClickEnabled]="false" (forwardOnClickItem)="onClickItem($event)"
+                *ngIf="selectedCategory === 'users'" />
+            <app-roles-items [onClickEnabled]="false" (forwardOnClickItem)="onClickItem($event)"
+                *ngIf="selectedCategory === 'roles'" />
+        </div>
+    </div>

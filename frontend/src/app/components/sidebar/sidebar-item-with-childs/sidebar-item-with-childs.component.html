@@ -1,0 +1,26 @@
+<div class="sidebar-item" (click)="onItemClick()" [ngClass]="{'active': currentRoute === placeholderText}">
+    <!-- Display icon -->
+    <img [attr.src]="iconName" width="25" />
+    <!-- Display placeholder text -->
+    <span>{{ placeholderText }}</span>
+
+    <!-- Arrow to indicate collapsible items -->
+    <div class="arr">
+        <svg [ngClass]="{'arrow-down': !collapsed || currentRoute.includes('Reportings')}"
+            xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+            <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+        </svg>
+    </div>
+</div>
+
+<!-- Child items list -->
+<div class="childs-list" *ngIf="!collapsed || currentRoute.includes('Reportings') ">
+    <!-- <div class="child" (click)="onChildItemClick('/reportings/inventory')"
+        [ngClass]="{'active-child': currentRoute === 'Reportings/inventory'}">
+        <p>Inventory</p>
+    </div> -->
+    <div class="child" *ngFor="let child of childs" (click)="onChildItemClick(child.itemClick)"
+        [ngClass]="{'active-child': currentRoute === child.activeChildRoute}">
+        <p>{{child.label}}</p>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+@import "../../../styles.scss";
+
+header {
+    background-color: var(--background-secondary-color); ///var(--background-secondary-color);
+    height: 7vh;
+    /* 10% of the viewport height */
+    width: 100vw;
+    /* 100% of the viewport width */
+    display: flex;
+
+    /* Enables Flexbox layout */
+    //  justify-content: center;
+    /* Centers items horizontally */
+    align-items: center;
+    /* Centers items vertically */
+    border-bottom: 1px solid var(--icon-color);
+
+    .left {
+        padding-left: 1rem;
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        width: 60%;
+
+        .left-one {
+            display: flex;
+            align-items: center;
+            width: 20vw;
+
+            .logo {
+                margin-left: 50px;
+                display: inline;
+                display: flex;
+                align-items: center;
+                font-size: 1.3rem;
+                color: var(--primary-color);
+
+                .logo-img {
+                    overflow: hidden;
+                    height: 3rem;
+                    //  aspect-ratio: 3/1;
+                    display: flex; /* Use flexbox */
+                    align-items: center; /* Center vertically */
+                    justify-content: center; /* Center horizontally */
+
+                    img {
+                        object-fit: contain;
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
+
+        .searchbar {
+            background-color: var(--background-color);
+            align-items: center;
+            width: 60%;
+            height: 1.8rem;
+            display: flex;
+            border-radius: 10px;
+            padding: 5px 15px;
+
+            input {
+                //    background-color: rgb(0, 140, 255);
+                border: none;
+                width: 95%;
+                height: 100%;
+                border: none;
+                background-color: transparent;
+
+                &:hover {
+                    border: none;
+                }
+
+                &:focus {
+                    border: none;
+                }
+
+                /* Allow the input to grow and take available space */
+            }
+        }
+    }
+
+    .right {
+        width: 40%;
+        justify-content: space-between;
+        .two {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            svg {
+                cursor: pointer;
+                margin: 5px;
+            }
+
+            div {
+                display: flex;
+                p {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

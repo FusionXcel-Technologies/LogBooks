@@ -1,0 +1,358 @@
+@import "../../../styles.scss";
+
+
+    .container {
+        flex: 1;
+       // margin-left: 1rem;
+
+        display: flex;
+        .left-container {
+            width: 65%;
+            .menu-buttons {
+                margin-top: 1rem;
+                width: 100%; // Full width container
+                display: flex; // Ensures flexbox layout for alignment
+                align-items: center; // Vertically centers the items
+                justify-content: flex-end; // Aligns content to the right (end of the flex container)
+                svg {
+                    cursor: pointer;
+                    padding: 1rem;
+                }
+            }
+
+            .top-searchbar {
+                margin-top: 10px;
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid var(--icon-color);
+                border-radius: 5px;
+                overflow: hidden;
+                .input-bar {
+                    height: 3rem;
+                    display: flex;
+                    flex: 1;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    background-color: var(--background-color);
+                    align-items: center;
+                    input {
+                        flex: 1;
+                        padding-left: 1rem;
+                        border: none;
+                        background-color: transparent;
+                    }
+                    .svg-btn {
+                        cursor: pointer;
+                        padding: 10px;
+                    }
+                    .custom-sale-btn {
+                        cursor: pointer;
+                        padding: 0 20px;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: aliceblue;
+                    }
+                }
+            }
+            .items-display {
+                margin-top: -2rem;
+                .category-selector {
+                    margin-bottom: 0.5rem;
+                    display: flex;
+                    .category-cative {
+                        border-bottom: 0.2rem solid var(--primary-color) !important;
+                    }
+                    .category {
+                        cursor: pointer;
+                        padding: 0 10px;
+                        border-bottom: 0.5rem solid transparent;
+                        height: 2.5rem;
+                        &:hover {
+                            border-bottom: 0.2rem solid var(--primary-color);
+                        }
+                    }
+                }
+            }
+        }
+        .right-container {
+            position: sticky;
+            bottom: 0;
+            margin-left: 0.5rem;
+            border-left: 1px solid var(--icon-color);
+            flex: 1;
+            height: 92.5vh;
+            background-color: var(--background-secondary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+
+            .select-printer {
+                width: 100%;
+                align-items: flex-end;
+                display: flex;
+
+                svg {
+                    padding: 0.5rem;
+                    // Optionally set a margin to the left if needed
+                    margin-left: auto; // Pushes SVG to the right
+                }
+            }
+            .printers-list {
+                background-color: #12d4ee;
+            }
+            .customer-container {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                svg {
+                    width: 50%;
+                    margin: 0 0.5rem;
+                    color: var(--primary-color);
+                }
+                p {
+                    cursor: pointer;
+                    &:hover {
+                        color: var(--primary-color);
+                    }
+                }
+            }
+            .receipt-items {
+                //    background-color: #28a745;
+                overflow-y: auto;
+
+                // -ms-overflow-style: none; /* For Internet Explorer and Edge */
+                // scrollbar-width: none; /* For Firefox */
+                // ::-webkit-scrollbar {
+                //     display: none; /* For Chrome, Safari, and Opera */
+                // }
+            }
+            .receipt-bottom {
+                // display: none;
+                background-color: #f8f9fa;
+                height: 50%;
+
+                border-top: 1px solid #dee2e6;
+                padding: 16px;
+                //  width: 50%;
+                width: 95%;
+                padding-bottom: 1rem;
+                padding-top: 0;
+                display: flex;
+                flex-direction: column;
+                // gap: 10px;
+                // position: fixed;
+                // bottom: 0;
+                // right: 0;
+                //width: 80%;
+                .sale-button {
+                    cursor: pointer;
+                    display: flex;
+                    background-color: var(--primary-color);
+                    padding: 0 2rem;
+                    color: var(--background-secondary-color);
+                    justify-content: space-between;
+                    border-radius: 5px;
+
+                    p {
+                        margin: 1rem;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+            .receipt-summary {
+                display: flex;
+                flex-direction: column;
+                //  gap: 10px;
+            }
+            .summary-item {
+                display: flex;
+                justify-content: space-between;
+                font-size: 16px;
+                font-weight: 500;
+                color: #495057;
+            }
+            .summary-label {
+                font-weight: bold;
+            }
+            .summary-value {
+                font-weight: normal;
+                text-align: right;
+            }
+            .total-amount {
+                color: var(--primary-color); /* Red color for total amount */
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .balance-amount {
+                color: #28a745; /* Green color for balance */
+                font-size: 18px;
+                font-weight: 700;
+            }
+        }
+    }
+
+
+.disabled {
+    opacity: 0.5;
+}
+
+.add-item-form {
+    width: 30vw;
+    max-width: 600px; // Adjust width as needed
+    margin: 0 auto;
+    // padding: 20px;
+    background-color: #fff;
+
+    .form-item {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; // Spacing between form rows
+
+        .input-item {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                padding: 10px;
+                border: 1px solid black;
+                border-radius: 4px;
+                font-size: 16px;
+                width: 100%;
+                box-sizing: border-box;
+                box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.1);
+                &::placeholder {
+                    color: #999;
+                }
+
+                &:focus {
+                    outline: none;
+                    border-color: var(--primary-color);
+                    box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.1);
+                }
+            }
+
+            // Specific styles for the last input item if needed
+            &:last-child {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: #fff;
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #45a049;
+        }
+
+        &:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column; // Ensure the main section arranges children in a column
+    justify-content: flex-start; // Align content to the top
+    max-height: 70vh; // Limit maximum height to 50% of the viewport height
+
+    // padding: 10px;
+    //   background-color: #12d4ee; // Softer background color for a cleaner look
+    overflow-y: auto; // Allow vertical scrolling when content overflows
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scrollbar-width: thin; /* For Firefox, defines the width of the scrollbar */
+    scrollbar-color: var(--icon-color) var(--background-color); /* For Firefox, sets scrollbar color */
+
+    ::-webkit-scrollbar {
+        width: 8px; /* Width of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent; /* Transparent background for scrollbar track */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent scrollbar thumb */
+        border-radius: 10px; /* Rounded corners for the thumb */
+    }
+
+    .cont {
+        display: flex;
+        flex-wrap: wrap; // Enable wrapping of items to the next line
+        gap: 10px; // Increase gap for better spacing between items
+        justify-content: flex-start; // Ensure items are aligned to the start of the row
+        align-items: flex-start; // Align items to the top
+        background-color: var(--background-color); // Add a white background for item container contrast
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add subtle shadow for depth
+    }
+}
+
+.printer-selector-item {
+    cursor: pointer;
+}
+
+.active {
+    color: var(--primary-color);
+}
+
+.form-control {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color, #ccc); /* Optional border color */
+    border-radius: 5px;
+    height: 2rem;
+    outline: none;
+    padding: 0 10px;
+    font-size: 1rem; /* Make text size consistent */
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s; /* Add transition for smoother focus effect */
+}
+
+/* Focus state for better accessibility */
+.form-control:focus {
+    border-color: var(--focus-border-color, var(--primary-color)); /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add shadow effect for focus */
+}
+
+/* Adding placeholder styling for better visibility */
+.form-control::placeholder {
+    color: var(--placeholder-color, #999); /* Use a variable for placeholder color */
+    opacity: 1; /* Ensures full opacity for placeholder */
+}
+#shortcuts-container {
+    margin: 20px auto;
+    padding-bottom: 20vh;
+    h3 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    #shortcuts-table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            color: #555;
+        }
+    }
+}

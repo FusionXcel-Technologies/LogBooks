@@ -1,0 +1,154 @@
+
+    <div class="container">
+        <h1>Settings</h1>
+        <form (ngSubmit)="saveSettings()">
+            <!-- Business Details -->
+            <section class="section">
+                <h2>Business Details</h2>
+                <div class="form-group">
+                    <label for="business_name">Business Name</label>
+                    <input type="text" id="business_name" [(ngModel)]="themeForm.business_name" name="business_name"
+                        placeholder=" " (ngModelChange)="onInputsChange('business_name')" />
+                </div>
+                <div class="images">
+                    <div class="left-images">
+                        <div class="form-group">
+                            <label for="business_logo">Business Logo</label>
+                            <input type="file" id="business_logo" #businessLogoInput
+                                (change)="onFileSelected($event, 'business_logo')" style="display: none" />
+                            <!-- Display Business Logo if available, and make it clickable -->
+                            <div (click)="triggerBusinessLogoInput()" style="cursor: pointer">
+                                <img *ngIf="themeForm.business_logo" [src]="themeForm.business_logo" alt="Business Logo"
+                                    style="
+                                            width: 100px;
+                                            margin-top: 10px;
+                                            border-radius: 0.5rem;
+                                            border: 2px solid var(--primary-color);
+                                          " />
+                                <span *ngIf="!themeForm.business_logo">Click to upload Business Logo</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="favicon">Favicon</label>
+                            <input type="file" id="favicon" #faviconInput (change)="onFileSelected($event, 'favicon')"
+                                style="display: none" (ngModelChange)="onInputsChange('favicon')" />
+                            <!-- Display Favicon if available, and make it clickable -->
+                            <div (click)="triggerFaviconInput()" style="cursor: pointer">
+                                <img *ngIf="themeForm.favicon" [src]="themeForm.favicon" alt="Favicon" style="
+                                            width: 100px;
+                                            margin-top: 10px;
+                                            border-radius: 0.5rem;
+                                            border: 2px solid var(--primary-color);
+                                          " />
+                                <span *ngIf="!themeForm.favicon">Click to upload Favicon</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-images">
+                        <div class="form-group">
+                            <label for="receipt_header">Receipt header</label>
+                            <input type="file" id="receipt_header" #receiptHeaderInput
+                                (change)="onFileSelected($event, 'receipt_header')" style="display: none" />
+                            <!-- Display Business Logo if available, and make it clickable -->
+                            <div (click)="triggerReceiptHeaderInput()" style="cursor: pointer">
+                                <img *ngIf="themeForm.receipt_header" [src]="themeForm.receipt_header"
+                                    alt="receipt header" style="
+                                    width: 100px;
+                                    margin-top: 10px;
+                                    border-radius: 0.5rem;
+                                    border: 2px solid var(--primary-color);
+                                  " />
+                                <span *ngIf="!themeForm.receipt_header"><svg xmlns="http://www.w3.org/2000/svg"
+                                        height="100px" viewBox="0 -960 960 960" width="100px" fill="#5f6368">
+                                        <path
+                                            d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm40-80h480L570-480 450-320l-90-120-120 160Zm-40 80v-560 560Z" />
+                                    </svg></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="receipt_bottom">Receipt bottom</label>
+                            <input type="file" id="receipt_bottom" #receiptBottomInput
+                                (change)="onFileSelected($event, 'receipt_bottom')" style="display: none" />
+                            <!-- Display Business Logo if available, and make it clickable -->
+                            <div (click)="triggerReceiptBottomInput()" style="cursor: pointer">
+                                <img *ngIf="themeForm.receipt_bottom" [src]="themeForm.receipt_bottom"
+                                    alt="receipt bottom" style="
+                                                    width: 100px;
+                                                    margin-top: 10px;
+                                                    border-radius: 0.5rem;
+                                                    border: 2px solid var(--primary-color);
+                                                  " />
+                                <span *ngIf="!themeForm.receipt_bottom"><svg xmlns="http://www.w3.org/2000/svg"
+                                        height="100px" viewBox="0 -960 960 960" width="100px" fill="#5f6368">
+                                        <path
+                                            d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm40-80h480L570-480 450-320l-90-120-120 160Zm-40 80v-560 560Z" />
+                                    </svg></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Theme Styles</h2>
+                <div class="color-grid">
+                    <div class="form-group">
+                        <label for="primary_color">Primary Color</label>
+                        <input type="color" id="primary_color" [(ngModel)]="themeForm.styles.variables.primary_color"
+                            name="primary_color" (ngModelChange)="onInputsChange('primary_color')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="secondary_color">Secondary Color</label>
+                        <input type="color" id="secondary_color"
+                            [(ngModel)]="themeForm.styles.variables.secondary_color" name="secondary_color"
+                            (ngModelChange)="onInputsChange('secondary_color')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="accent_color">Accent Color</label>
+                        <input type="color" id="accent_color" [(ngModel)]="themeForm.styles.variables.accent_color"
+                            name="accent_color" (ngModelChange)="onInputsChange('accent_color')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="text_color">Text Color</label>
+                        <input type="color" id="text_color" [(ngModel)]="themeForm.styles.variables.text_color"
+                            name="text_color" (ngModelChange)="onInputsChange('text_color')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="background_color">Background Color</label>
+                        <input type="color" id="background_color"
+                            [(ngModel)]="themeForm.styles.variables.background_color" name="background_color"
+                            (ngModelChange)="onInputsChange('background_color')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="background_secondary_color">Secondary Background Color</label>
+                        <input type="color" id="background_secondary_color" [(ngModel)]="
+                themeForm.styles.variables.background_secondary_color" name="background_secondary_color"
+                            (ngModelChange)="onInputsChange('background_secondary_color')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="icon_color">Icon Color</label>
+                        <input type="color" id="icon_color" [(ngModel)]="themeForm.styles.variables.icon_color"
+                            name="icon_color" (ngModelChange)="onInputsChange('icon_color')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="hover_color">Hover Color</label>
+                        <input type="color" id="hover_color" [(ngModel)]="themeForm.styles.variables.hover_color"
+                            name="hover_color" (ngModelChange)="onInputsChange('hover_color')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="font_size">Font Size</label>
+                        <input type="text" id="font_size" [(ngModel)]="themeForm.styles.variables.font_size"
+                            name="font_size" placeholder=" " style="width: 3rem"
+                            (ngModelChange)="onInputsChange('font_size')" />
+                    </div>
+                    <div class="form-group">
+                        <label for="font_weight">Font Weight</label>
+                        <input type="text" id="font_weight" [(ngModel)]="themeForm.styles.variables.font_weight"
+                            name="font_weight" style="width: 3rem" placeholder=" "
+                            (ngModelChange)="onInputsChange('font_weight')" />
+                    </div>
+                </div>
+            </section>
+            <button type="submit">Save Settings</button>
+        </form>
+    </div>

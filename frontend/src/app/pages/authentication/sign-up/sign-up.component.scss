@@ -1,0 +1,98 @@
+$primary-color: var(--primary-color); // Primary theme color
+$error-color: #e74c3c; // Error color
+// var(--background-color): #f8f9fa; // Light background color
+
+.sign-up-container {
+    position: absolute;
+    top: 50%; // Center vertically
+    left: 50%; // Center horizontally
+    min-width: 500px; // Minimum width
+    // max-width: 400px; // Maximum width
+    transform: translate(-50%, -50%); // Adjust to center perfectly
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color); // Light background
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center; // Center the title
+    margin-bottom: 30px; // Space below the title
+    font-size: 26px;
+    color: #333; // Dark gray for better readability
+}
+
+.form-group {
+    margin-bottom: 20px; // Space between form groups
+}
+
+.form-input {
+    width: 100%; // Full width
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px; // Rounded corners
+    font-size: 16px;
+    transition: border-color 0.3s ease; // Smooth border transition
+
+    &:focus {
+        border-color: var(--primary-color); // Highlight border on focus
+        outline: none; // Remove default outline
+        box-shadow: 0 0 5px rgba(var(--primary-color), 0.5); // Subtle glow effect
+    }
+
+    &::placeholder {
+        color: #aaa; // Placeholder color
+        opacity: 1; // Ensure visibility
+    }
+}
+
+.submit-button {
+    width: 100%; // Full width
+    padding: 12px;
+    background-color: var(--primary-color); // Primary color
+    color: white; // White text
+    border: none;
+    border-radius: 8px; // Rounded button
+    font-size: 16px;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease; // Smooth transitions
+
+    &:hover {
+        background-color: var(--primary-color); // Darker on hover
+        transform: translateY(-2px); // Subtle lift effect
+    }
+
+    &:disabled {
+        background-color: #cccccc; // Gray out button when disabled
+        cursor: not-allowed; // Change cursor to indicate disabled state
+    }
+}
+
+.error {
+    color: $error-color; // Red color for error messages
+    font-size: 0.85em; // Slightly larger font size for clarity
+    margin-top: 5px; // Pull up error message closer to input
+}
+
+.signup-link {
+    margin-top: 15px; // Space above the link
+
+    b {
+        color: var(--primary-color); // Use your primary color for links
+        text-decoration: none; // Remove underline
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline; // Underline on hover
+        }
+    }
+}
+
+.error-message {
+    color: red;
+}

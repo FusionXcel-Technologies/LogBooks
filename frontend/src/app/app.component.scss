@@ -1,0 +1,13 @@
+.dashboard-body {
+    display: flex;
+    flex-direction: row;
+    // background-color: var(--background-color);
+    margin-right: 0.5rem;
+  
+    .dashboard-content {
+      flex-grow: 1;
+      margin-left: 1rem;
+  
+    }
+  }
+  

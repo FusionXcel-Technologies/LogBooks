@@ -1,0 +1,15 @@
+<ng-container *ngIf="!isRestrictedRoute">
+    <app-header></app-header>
+
+    <div class="dashboard-body">
+        <app-sidebar></app-sidebar>
+
+        <div class="dashboard-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="isRestrictedRoute">
+    <router-outlet></router-outlet>
+</ng-container>

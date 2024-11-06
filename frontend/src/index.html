@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>LogBooks</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link id="favicon" rel="icon" href="./favicon.ico">
+</head>
+
+<body>
+  <app-root></app-root>
+  <script>
+    function changeFavicon(src) {
+      const favicon = document.getElementById('favicon');
+      if (favicon) {
+        favicon.href = src;
+      } else {
+        const newFavicon = document.createElement('link');
+        newFavicon.id = 'favicon';
+        newFavicon.rel = 'icon';
+        newFavicon.type = 'image/png'; // Set the image type to png or jpg
+        newFavicon.href = src;
+        document.head.appendChild(newFavicon);
+      }
+    }
+
+    const theme = JSON.parse(localStorage.getItem('theme'));
+
+    // Set the favicon if available
+    if (theme && theme.favicon) {
+      changeFavicon(theme.favicon);  // favicon can be .png, .jpg, etc.
+    }
+
+    // Function to capitalize the first letter of a string
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    // Function to update the title
+    function updateTitle() {
+      const businessName = theme ? theme.business_name : 'LogBooks';
+      const currentRoute = window.location.href.split('/').pop() || 'home'; // Get the last part of the path or default to 'home'
+      const formattedRoute = capitalizeFirstLetter(currentRoute.replace(/_/g, ' '));
+      document.title = ` ${formattedRoute} - ${businessName}`;
+    }
+
+    // Initial title set
+    updateTitle();
+
+    // Listen for popstate event for history navigation
+    window.addEventListener('popstate', updateTitle);
+
+    // Listen for hash changes (if applicable)
+    window.addEventListener('hashchange', updateTitle);
+
+    // Override history methods to update title on state change
+    const originalPushState = history.pushState;
+    history.pushState = function (...args) {
+      originalPushState.apply(this, args);
+      updateTitle();
+    };
+
+    const originalReplaceState = history.replaceState;
+    history.replaceState = function (...args) {
+      originalReplaceState.apply(this, args);
+      updateTitle();
+    };
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<div class="title-row">
+    <div class="dates-row">
+        <div style="display: flex;">
+        <!-- Start Date Section -->
+        <div class="date-section">
+            <label for="startDate">Starts From</label>
+            <button 
+                type="button"
+                (click)="toggleStartDatePicker()"
+                [attr.aria-expanded]="showStartDatePicker"
+                aria-haspopup="dialog"
+                class="toggle-button">
+                {{ home_data.stamp.from | date: 'yyyy-MM-dd' }}
+            </button>
+
+            <div *ngIf="showStartDatePicker" class="date-time-picker">
+                <input 
+                    type="datetime-local" 
+                    class="custom-datetime" 
+                    [(ngModel)]="startDateTime" 
+                    (change)="updateStartDateTime()" 
+                    aria-label="Select Start Date and Time">
+            </div>
+        </div>
+
+        <!-- End Date Section -->
+        <div class="date-section">
+            <label for="endDate">To</label>
+            <button 
+                type="button"
+                (click)="toggleEndDatePicker()" 
+                [attr.aria-expanded]="showEndDatePicker" 
+                aria-haspopup="dialog" 
+                class="toggle-button">
+                {{ home_data.stamp.to | date: 'yyyy-MM-dd' }}
+            </button>
+
+            <div *ngIf="showEndDatePicker" class="date-time-picker">
+                <input 
+                    type="datetime-local" 
+                    class="custom-datetime" 
+                    [(ngModel)]="endDateTime" 
+                    (change)="updateEndDateTime()" 
+                    aria-label="Select End Date and Time">
+            </div>
+        </div>
+
+    </div>
+        <!-- Refresh Icon -->
+        <div class="refresh-icosn" aria-label="Reload Data" tabindex="0" role="button">
+            <svg (click)="uploadHomeData()" 
+             xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M260-160q-91 0-155.5-63T40-377q0-78 47-139t123-78q25-92 100-149t170-57q117 0 198.5 81.5T760-520q69 8 114.5 59.5T920-340q0 75-52.5 127.5T740-160H520q-33 0-56.5-23.5T440-240v-206l-64 62-56-56 160-160 160 160-56 56-64-62v206h220q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41h100v80H260Zm220-280Z"/></svg>
+        </div>
+        <div class="refresh-icon" aria-label="Reload Data" tabindex="0" role="button">
+            <svg (click)="uploadHomeData()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                width="24px" fill="#5f6368">
+                <path
+                    d="M204-318q-22-38-33-78t-11-82q0-134 93-228t227-94h7l-64-64 56-56 160 160-160 160-56-56 64-64h-7q-100 0-170 70.5T240-478q0 26 6 51t18 49l-60 60ZM481-40 321-200l160-160 56 56-64 64h7q100 0 170-70.5T720-482q0-26-6-51t-18-49l60-60q22 38 33 78t11 82q0 134-93 228t-227 94h-7l64 64-56 56Z" />
+            </svg>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="loading-spinner">
+    Loading data...
+</div>
+
+<!-- Error Message -->
+<div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+</div>
+
+<!-- Dashboard Cards -->
+<div class="dashboard-cards grid">
+    <div class="dashboard-card">
+        <h2>Sales</h2>
+        <p>{{ home_data.sales.quantity || 0 }}</p>
+    </div>
+    <div class="dashboard-card">
+        <h2>Sales Income</h2>
+        <p>{{ home_data.sales.totalValue | number: '1.2-2' }} LKR</p>
+    </div>
+    <div class="dashboard-card">
+        <h2>Average Sale</h2>
+        <p>{{ formatNumber(home_data.sales.average) }} LKR</p>
+    </div>
+    <div class="dashboard-card">
+        <h2>Product Variants</h2>
+        <p>{{ home_data.products.inStock.variations_count | number: '1.0-1' }}</p>
+    </div>
+    <div class="dashboard-card">
+        <h2>Products in Stock</h2>
+        <p>{{ home_data.products.inStock.stock_count | number: '1.2-2' }}</p>
+    </div>
+    <div class="dashboard-card">
+        <h2>Products Value</h2>
+        <p>{{ home_data.products.inStock.value | number: '1.2-2' }} LKR</p>
+    </div>
+    <div class="dashboard-card warn">
+        <h2>Low Stock Alerts</h2>
+        <p>{{ home_data.products.lowStock.quantity | number: '1.0-2' }}</p>
+    </div>
+    <div class="dashboard-card alert">
+        <h2>Out Stock Alerts</h2>
+        <p>{{ home_data.products.outOfStock.quantity | number: '1.0-2' }}</p>
+    </div>
+</div>
+
+<!-- Dashboard Charts -->
+<div class="dashboard-charts">
+    <!-- Optional charts can be placed here -->
+</div>

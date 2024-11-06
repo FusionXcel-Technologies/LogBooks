@@ -1,0 +1,12 @@
+<!-- src/app/components/sidebar/sidebar-item/sidebar-item.component.html -->
+<div class="sidebar-item" (click)="onItemClick()" [ngClass]="{'active': currentRoute === placeholderText}">
+    <!-- Display icon (assuming you're using a font library like Font Awesome) -->
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+        [attr.fill]="currentRoute === placeholderText ? 'currentColor' : '#5f6368'">
+        <path [attr.d]="iconName" />
+    </svg>
+     -->
+    <img [attr.src]="iconName" width="25" />
+    <!-- Display placeholder text -->
+    <span>{{ placeholderText }}</span>
+</div>

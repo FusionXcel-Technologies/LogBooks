@@ -1,0 +1,52 @@
+// src/styles.scss
+
+// @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+// * {
+//     margin: 0;
+//     padding: 0;
+// }
+
+input {
+    outline: none; // Remove the default outline when the input is focused
+}
+
+/* You can add global styles to this file, and also import other style files */
+// styles.scss
+
+// Define color variables
+
+:root {
+    --primary-color: #4a90e2; /* Soft blue */
+    --secondary-color: #6c757d; /* Neutral gray */
+    --accent-color: #17a2b8; /* Cool cyan */
+    --text-color: #212529; /* Dark gray for text */
+    --background-color: #f8f9fa; /* Light gray background */
+    --background-secondary-color: #ffffff; /* White background for contrast */
+    --icon-color: #495057; /* Muted gray for icons */
+    --hover-color: #e2e6ea; /* Light gray hover effect */
+    --font-size: 16px; /* Standard font size */
+    --font-weight: 400; /* Normal font weight */
+}
+
+// You can set the default font-family for the entire project here
+body {
+    font-family: "Rubik", sans-serif;
+    height: 100%;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+svg {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    &:hover {
+        fill: var(--primary-color);
+    }
+}
+
+button {
+    cursor: pointer;
+}

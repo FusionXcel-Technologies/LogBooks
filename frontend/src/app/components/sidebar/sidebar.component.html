@@ -1,0 +1,32 @@
+<div class="outer" *ngIf="permissions.length>1">
+    <app-sidebar-item [iconName]="'house.png'" [placeholderText]="'Home'" [currentRoute]="currentRoute"
+        (action)="navigateTo('/home')" *ngIf="hasPermission('home')">
+    </app-sidebar-item>
+
+    <app-sidebar-item [iconName]="'material-management (1).png'" [placeholderText]="'Inventory management'"
+        [currentRoute]="currentRoute" (action)="navigateTo('/inventory_management')"
+        *ngIf="hasPermission('inventory_management')">
+    </app-sidebar-item>
+
+    <app-sidebar-item [iconName]="'cashier.png'" [placeholderText]="'Sales'" [currentRoute]="currentRoute"
+        (action)="navigateTo('/sales')" *ngIf="hasPermission('sales')">
+    </app-sidebar-item>
+
+    <app-sidebar-item [iconName]="'fingerprint.png'" [placeholderText]="'Access control'" [currentRoute]="currentRoute"
+        (action)="navigateTo('/access_control')" *ngIf="hasPermission('access_control')">
+    </app-sidebar-item>
+
+    <!-- <app-sidebar-item-with-childs [iconName]="'fingerprint.png'" [placeholderText]="'Access control'"
+        [currentRoute]="currentRoute" (action)="navigateTo($event)"
+        [childs]="[{itemClick: '/reportings/sales', activeChildRoute: 'Reportings/actions', label: 'Actions'},{itemClick: '/reportings/sales', activeChildRoute: 'Reportings/roles', label: 'Roles'}]">
+    </app-sidebar-item-with-childs> -->
+
+    <app-sidebar-item-with-childs [iconName]="'seo-report.png'" [placeholderText]="'Reportings'"
+        *ngIf="hasPermission('reports')" [currentRoute]="currentRoute" (action)="navigateTo($event)"
+        [childs]="[{itemClick: '/reportings/sales', activeChildRoute: 'Reportings/sales', label: 'Sales'}]">
+    </app-sidebar-item-with-childs>
+
+    <app-sidebar-item [iconName]="'cogwheel.png'" [placeholderText]="'Settings'" [currentRoute]="currentRoute"
+        (action)="navigateTo('/settings')" *ngIf="hasPermission('settings')">
+    </app-sidebar-item>
+</div>

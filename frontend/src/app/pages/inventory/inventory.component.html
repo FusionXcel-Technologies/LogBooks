@@ -1,0 +1,69 @@
+
+    <div class="container">
+        <h1>Inventory management</h1>
+        <div class="row-one">
+            <div class="search-bar">
+                <input type="text" class="input" placeholder="Find Item" [(ngModel)]="searchValue"
+                    (keydown.shift.s)="focusSearchInput()">
+                <svg (click)="searchItems()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                    width="24px" fill="#5f6368">
+                    <path
+                        d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                </svg>
+            </div>
+            <div class="add-button">
+                <svg (click)="toggleModal()" xmlns="http://www.w3.org/2000/svg" height="34px" viewBox="0 -960 960 960"
+                    width="34px" fill="#5f6368">
+                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                </svg>
+
+                <!-- Define the content you want to inject into the modal -->
+                <ng-template #contentTemplate>
+                    <form (ngSubmit)="addItem()" class="add-item-form">
+                        <div class="form-item">
+                            <div class="input-item">
+                                <input [(ngModel)]="item.name" name="name" required placeholder="Name"
+                                    class="add-item-name" />
+                            </div>
+                            <div class="input-item">
+                                <input [(ngModel)]="item.stock" name="stock" required placeholder="Stock" />
+                            </div>
+                            <div class="input-item">
+                                <input [(ngModel)]="item.minStock" name="minStock" required placeholder="Min stock" />
+                            </div>
+                            <div class="input-item">
+
+                                <input [(ngModel)]="item.buyPrice" name="buyPrice" placeholder="Buy price" required />
+                            </div>
+                            <div class="input-item">
+
+                                <input [(ngModel)]="item.salePrice" name="salePrice" placeholder="Sale price"
+                                    required />
+                            </div>
+                            <div class="input-item">
+
+                                <input [(ngModel)]="item.barcode" name="barcode" placeholder="barcode" required />
+                            </div>
+                        </div>
+                        <div class="pick-file">
+                            <svg (click)="triggerFileInput()" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                                <path
+                                    d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+                            </svg>
+                            <input type="file" id="file" (change)="onFileChange($event)" #fileInput hidden />
+                            <button type="submit">Add Item</button>
+                        </div>
+                    </form>
+                </ng-template>
+
+                <!-- Modal component with dynamic content -->
+                <app-modal-popup [modal_visible]="modalVisible" [modal_content]="contentTemplate" />
+
+            </div>
+        </div>
+        <div class="container-zz">
+            <app-items [items]="searchResults" (forwardCloneItem)="cloneItem($event)" />
+        </div>
+    </div>
+

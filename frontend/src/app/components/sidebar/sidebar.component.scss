@@ -1,0 +1,14 @@
+@import "../../../styles.scss";
+
+.outer {
+    background-color: var(--background-secondary-color);
+    //  height: 70vh;
+    /* 100% of the viewport height */
+    width: 20vw;
+    padding-top: 1rem;
+    min-width: 250px;
+    max-width: 250px;
+    border-bottom-right-radius: 1rem;
+
+    /* 100% of the viewport width */
+}
